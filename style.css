@@ -628,3 +628,434 @@ footer {
         font-size: 15px;
     }
 }
+
+/* ==========================================
+   BOTÓN DE MODO OSCURO / CLARO
+========================================== */
+
+#botonTema {
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+
+    width: 52px;
+    height: 52px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    z-index: 999;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.35);
+
+    transition: 0.3s;
+}
+
+#botonTema:hover {
+    transform: scale(1.08);
+}
+
+
+/* ==========================================
+   MODO CLARO
+========================================== */
+
+body.modo-claro {
+    background: #f2f4f7;
+
+    color: #172033;
+}
+
+body.modo-claro nav {
+    background: rgba(255, 255, 255, 0.88);
+
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+body.modo-claro nav a {
+    color: #596273;
+}
+
+body.modo-claro nav a:hover {
+    color: #111827;
+}
+
+body.modo-claro .introduccion > p:last-child {
+    color: #606a78;
+}
+
+body.modo-claro .tarjeta {
+    background: #ffffff;
+
+    border-color: rgba(0, 0, 0, 0.08);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+body.modo-claro .contenido p {
+    color: #606a78;
+}
+
+body.modo-claro .etiquetas span {
+    background: #f3f4f6;
+
+    border-color: #e5e7eb;
+
+    color: #4b5563;
+}
+
+body.modo-claro .punto {
+    border-color: #f2f4f7;
+}
+
+body.modo-claro #botonTema {
+    background: #111827;
+
+    color: white;
+}
+
+
+/* ==========================================
+   ANIMACIÓN DE LAS ETAPAS
+========================================== */
+
+.periodo {
+    opacity: 0;
+
+    transform: translateY(50px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.periodo.visible {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* ==========================================
+   BOTÓN DESCUBRIR MÁS
+========================================== */
+
+.descubrir {
+    margin-top: 25px;
+
+    width: fit-content;
+
+    padding: 10px 15px;
+
+    border-radius: 20px;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    background: rgba(255, 255, 255, 0.06);
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    transition: 0.3s;
+}
+
+.descubrir:hover {
+    background: rgba(255, 255, 255, 0.13);
+
+    transform: translateY(-2px);
+}
+
+
+/* ==========================================
+   INFORMACIÓN EXTRA
+========================================== */
+
+.informacion-extra {
+    max-height: 0;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    margin-top: 0;
+
+    color: #aeb6c4;
+
+    transition:
+        max-height 0.5s ease,
+        opacity 0.4s ease,
+        margin 0.5s ease;
+}
+
+.informacion-extra.mostrar {
+    max-height: 300px;
+
+    opacity: 1;
+
+    margin-top: 22px;
+}
+
+.informacion-extra strong {
+    color: #ffffff;
+}
+
+
+/* ==========================================
+   QUIZ
+========================================== */
+
+.quiz-section {
+    width: 85%;
+
+    max-width: 900px;
+
+    margin: 0 auto 120px;
+
+    padding: 60px;
+
+    text-align: center;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(110, 231, 216, 0.09),
+            rgba(128, 90, 213, 0.07)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.3);
+}
+
+.quiz-section h2 {
+    font-family: Georgia, serif;
+
+    font-size: clamp(35px, 5vw, 55px);
+
+    margin-bottom: 15px;
+}
+
+.descripcion-quiz {
+    color: #9ca3af;
+
+    margin-bottom: 40px;
+}
+
+#quiz h3 {
+    max-width: 700px;
+
+    margin: 20px auto 30px;
+
+    font-size: 25px;
+}
+
+.numero-pregunta {
+    color: #6ee7d8;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+
+/* OPCIONES */
+
+.opciones {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+
+    max-width: 650px;
+
+    margin: auto;
+}
+
+.opcion {
+    padding: 15px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    background: rgba(255, 255, 255, 0.05);
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    transition: 0.25s;
+}
+
+.opcion:hover {
+    background: rgba(255, 255, 255, 0.12);
+
+    transform: translateY(-2px);
+}
+
+.opcion.correcta {
+    background: #1f9d70;
+
+    border-color: #2fcf94;
+}
+
+.opcion.incorrecta {
+    background: #b64040;
+
+    border-color: #e45b5b;
+}
+
+.opcion:disabled {
+    cursor: default;
+}
+
+
+/* RESULTADO */
+
+.resultado strong {
+    display: block;
+
+    margin: 25px 0;
+
+    font-family: Georgia, serif;
+
+    font-size: 75px;
+
+    color: #6ee7d8;
+}
+
+.resultado h3 {
+    margin-bottom: 25px;
+}
+
+.reiniciar {
+    padding: 12px 20px;
+
+    border: none;
+
+    border-radius: 25px;
+
+    background: #ffffff;
+
+    color: #111827;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.reiniciar:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ==========================================
+   MODO CLARO - QUIZ
+========================================== */
+
+body.modo-claro .quiz-section {
+    background: #ffffff;
+
+    border-color: #e5e7eb;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+body.modo-claro .descripcion-quiz {
+    color: #667085;
+}
+
+body.modo-claro .opcion {
+    background: #f8fafc;
+
+    border-color: #e5e7eb;
+
+    color: #1f2937;
+}
+
+body.modo-claro .opcion:hover {
+    background: #eef2f7;
+}
+
+body.modo-claro .opcion.correcta {
+    color: white;
+}
+
+body.modo-claro .opcion.incorrecta {
+    color: white;
+}
+
+body.modo-claro .descubrir {
+    color: #1f2937;
+
+    background: #f4f6f8;
+
+    border-color: #e5e7eb;
+}
+
+body.modo-claro .informacion-extra {
+    color: #667085;
+}
+
+body.modo-claro .informacion-extra strong {
+    color: #111827;
+}
+
+
+/* ==========================================
+   RESPONSIVE DEL QUIZ
+========================================== */
+
+@media (max-width: 650px) {
+
+    .quiz-section {
+        width: 90%;
+
+        padding: 35px 20px;
+    }
+
+    .opciones {
+        grid-template-columns: 1fr;
+    }
+
+    #quiz h3 {
+        font-size: 20px;
+    }
+
+    #botonTema {
+        width: 46px;
+
+        height: 46px;
+
+        right: 15px;
+
+        bottom: 15px;
+    }
+}
