@@ -346,3 +346,51 @@ function mostrarResultado() {
 
 // Iniciar quiz
 mostrarPregunta();
+
+// ==========================================
+// NAVEGACIÓN INTERACTIVA DE LA LÍNEA DEL TIEMPO
+// ==========================================
+
+const enlacesNavegacion = document.querySelectorAll("nav a");
+
+enlacesNavegacion.forEach(function (enlace) {
+
+    enlace.addEventListener("click", function (evento) {
+
+        evento.preventDefault();
+
+        // Obtiene el ID al que apunta el enlace
+        const destinoID = enlace.getAttribute("href");
+
+        const destino = document.querySelector(destinoID);
+
+        if (!destino) {
+            return;
+        }
+
+        // Quitar el resaltado de otras épocas
+        document.querySelectorAll(".periodo").forEach(function (periodo) {
+            periodo.classList.remove("resaltado");
+        });
+
+        // Desplazarse hasta la época seleccionada
+        destino.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+        // Esperar un poco para que termine el desplazamiento
+        setTimeout(function () {
+
+            destino.classList.add("resaltado");
+
+            // Quitar el resaltado después de 2 segundos
+            setTimeout(function () {
+                destino.classList.remove("resaltado");
+            }, 2000);
+
+        }, 500);
+
+    });
+
+});
