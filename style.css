@@ -1091,3 +1091,66 @@ body.modo-claro .informacion-extra strong {
 
     transition: 0.4s ease;
 }
+
+/* ==========================================
+   ÉPOCA ACTIVA EN LA NAVEGACIÓN
+========================================== */
+
+nav a {
+    position: relative;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+/* Enlace de la época actual */
+
+nav a.activo {
+    color: #6ee7d8;
+
+    font-weight: bold;
+
+    transform: translateY(-1px);
+}
+
+
+/* Línea debajo del enlace */
+
+nav a.activo::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    bottom: -7px;
+
+    height: 2px;
+
+    border-radius: 10px;
+
+    background: #6ee7d8;
+
+    box-shadow:
+        0 0 10px rgba(110, 231, 216, 0.7);
+
+    animation: aparecerLinea 0.25s ease;
+}
+
+
+@keyframes aparecerLinea {
+
+    from {
+        width: 0;
+        opacity: 0;
+    }
+
+    to {
+        width: 100%;
+        opacity: 1;
+    }
+
+}

@@ -394,3 +394,53 @@ enlacesNavegacion.forEach(function (enlace) {
     });
 
 });
+
+// ==========================================
+// MARCAR LA ÉPOCA ACTUAL EN LA NAVEGACIÓN
+// ==========================================
+
+const enlacesNav = document.querySelectorAll("nav a");
+const seccionesHistoria = document.querySelectorAll(".periodo");
+
+const observadorNavegacion = new IntersectionObserver(
+
+    function (entradas) {
+
+        entradas.forEach(function (entrada) {
+
+            if (entrada.isIntersecting) {
+
+                const idActual = entrada.target.id;
+
+                // Quitar "activo" de todos los enlaces
+                enlacesNav.forEach(function (enlace) {
+                    enlace.classList.remove("activo");
+                });
+
+                // Buscar el enlace correspondiente
+                const enlaceActual = document.querySelector(
+                    `nav a[href="#${idActual}"]`
+                );
+
+                // Activarlo
+                if (enlaceActual) {
+                    enlaceActual.classList.add("activo");
+                }
+            }
+
+        });
+
+    },
+
+    {
+        rootMargin: "-35% 0px -55% 0px",
+        threshold: 0
+    }
+
+);
+
+
+// Observar cada época
+seccionesHistoria.forEach(function (seccion) {
+    observadorNavegacion.observe(seccion);
+});
