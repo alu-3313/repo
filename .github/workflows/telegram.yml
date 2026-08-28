@@ -10,6 +10,18 @@ jobs:
     steps:
       - name: Enviar mensaje a Telegram
         run: |
-          curl -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
-          -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
-          -d text="🚀 Se realizó un nuevo push en el repositorio ${{ github.repository }}. Autor: ${{ github.actor }}"
+          response=$(curl -s -w "\n%{http_code}" -X POST \
+            "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+            -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
+            --data-urlencode "text=🚀 Nuevo push en el repositorio ${{ github.repository }}. Autor: ${{ github.actor }}")
+
+          echo "$response"
+
+          http_code=$(echo "$response" | tail -n 1)
+
+          if [ "$http_code" -ne 200 ]; then
+            echo "❌ Error: Telegram no pudo enviar el mensaje."
+            exit 1
+          fi
+
+          echo "✅ Mensaje enviado correctamente a Telegram."
